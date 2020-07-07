@@ -2,11 +2,12 @@ def find_item_by_name_in_collection(name, collection)
   # Implement me first!
   #
   # Consult README for inputs and outputs
-  if collection.include? name
-    return collection[name]
-  else
-    return nil
-  end
+  collecion.each do |item|
+    if item[:item] == name
+      return item
+    else
+      return nil
+    end
 end
 
 def consolidate_cart(cart)
