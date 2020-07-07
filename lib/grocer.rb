@@ -21,10 +21,18 @@ def consolidate_cart(cart)
     # Check to see if the item already exists in the tallied_groceries
     found = find_item_by_name_in_collection(grocery_item[:item], tallied_groceries)
     if found
-      tallied_groceries.each do |tallied_item|
+      tallied_groceries.each_with_index do |tallied_item, index|
         if tallied_item[:item] == grocery_item[:item]
-          
-  puts cart
+          found[:count] += 1
+          tallied_item[index] = found
+        end
+      end
+    else
+      grocery_item[:count] = 1
+      tallied_groceries.push(grocery_item)
+    end
+  end
+  tallied_groceries
 end
 
 
